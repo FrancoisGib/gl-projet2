@@ -18,58 +18,62 @@ import us.codecraft.webmagic.utils.HttpConstant;
  */
 public class Site {
 
+    /* The site domain name */
     private String domain;
 
+    /* The user agent of the site */
     private String userAgent;
 
+    /* The cookies used by default when a request is sent to this site */
     private Map<String, String> defaultCookies = new LinkedHashMap<String, String>();
 
+    /* The additionnal cookies when a request is sent to this site */
     private Map<String, Map<String, String>> cookies = new HashMap<String, Map<String, String>>();
 
+    /* The charset of the page, when charset is not set or set to null, it can be auto detected by Http header. */
     private String charset;
 
+    /* The default charset of the Page, if charset is null, this default charset will be used */
     private String defaultCharset;
 
+    /* The interval between the processing of two pages */
     private int sleepTime = 5000;
 
+    /* The time before retry after a download fail */
     private int retryTimes = 0;
 
+    /* When cycleRetryTimes is more than 0, it will add back to scheduler and try download again */
     private int cycleRetryTimes = 0;
 
+    /* The time to sleep when a download fail */
     private int retrySleepTime = 1000;
 
+    /* The time before the downloader stops trying to download the Page */
     private int timeOut = 5000;
 
+    /* The set of the different status codes in the HTTP protocol */
     private static final Set<Integer> DEFAULT_STATUS_CODE_SET = new HashSet<Integer>();
 
     private Set<Integer> acceptStatCode = DEFAULT_STATUS_CODE_SET;
 
+    /* The headers when a request is sent to this site */
     private Map<String, String> headers = new HashMap<String, String>();
 
+    /* Use the gzip compression or not */
     private boolean useGzip = true;
 
+    /* Downloader is supposed to store response cookie.
+     * If disabled it will ignore all cookie fields and stay clean. */
     private boolean disableCookieManagement = false;
 
     static {
         DEFAULT_STATUS_CODE_SET.add(HttpConstant.StatusCode.CODE_200);
     }
 
-    /**
-     * new a Site
-     *
-     * @return new site
-     */
     public static Site me() {
         return new Site();
     }
 
-    /**
-     * Add a cookie with domain {@link #getDomain()}
-     *
-     * @param name name
-     * @param value value
-     * @return this
-     */
     public Site addCookie(String name, String value) {
         defaultCookies.put(name, value);
         return this;
@@ -78,10 +82,10 @@ public class Site {
     /**
      * Add a cookie with specific domain.
      *
-     * @param domain domain
-     * @param name name
-     * @param value value
-     * @return this
+     * @param domain The domain to add the cookie to
+     * @param name The name of the cookie
+     * @param value The value of the cookie
+     * @return this instance itself
      */
     public Site addCookie(String domain, String name, String value) {
         if (!cookies.containsKey(domain)){
@@ -91,105 +95,46 @@ public class Site {
         return this;
     }
 
-    /**
-     * set user agent
-     *
-     * @param userAgent userAgent
-     * @return this
-     */
     public Site setUserAgent(String userAgent) {
         this.userAgent = userAgent;
         return this;
     }
 
-    /**
-     * get cookies
-     *
-     * @return get cookies
-     */
     public Map<String, String> getCookies() {
         return defaultCookies;
     }
 
-    /**
-     * get cookies of all domains
-     *
-     * @return get cookies
-     */
     public Map<String,Map<String, String>> getAllCookies() {
         return cookies;
     }
 
-    /**
-     * get user agent
-     *
-     * @return user agent
-     */
     public String getUserAgent() {
         return userAgent;
     }
 
-    /**
-     * get domain
-     *
-     * @return get domain
-     */
     public String getDomain() {
         return domain;
     }
 
-    /**
-     * set the domain of site.
-     *
-     * @param domain domain
-     * @return this
-     */
     public Site setDomain(String domain) {
         this.domain = domain;
         return this;
     }
 
-    /**
-     * Set charset of page manually.<br>
-     * When charset is not set or set to null, it can be auto detected by Http header.
-     *
-     * @param charset charset
-     * @return this
-     */
     public Site setCharset(String charset) {
         this.charset = charset;
         return this;
     }
 
-    /**
-     * get charset set manually
-     *
-     * @return charset
-     */
     public String getCharset() {
         return charset;
     }
 
-    /**
-     * Set default charset of page.
-     *
-     * When charset detect failed, use this default charset.
-     *
-     * @param defaultCharset the default charset
-     * @return this
-     * @since 0.9.0
-     */
     public Site setDefaultCharset(String defaultCharset) {
         this.defaultCharset = defaultCharset;
         return this;
     }
 
-    /**
-     * The default charset if charset detected failed.
-     *
-     * @return the defulat charset
-     * @since 0.9.0
-     */
     public String getDefaultCharset() {
         return defaultCharset;
     }
@@ -198,12 +143,6 @@ public class Site {
         return timeOut;
     }
 
-    /**
-     * set timeout for downloader in ms
-     *
-     * @param timeOut timeOut
-     * @return this
-     */
     public Site setTimeOut(int timeOut) {
         this.timeOut = timeOut;
         return this;
@@ -223,42 +162,19 @@ public class Site {
         return this;
     }
 
-    /**
-     * get acceptStatCode
-     *
-     * @return acceptStatCode
-     */
     public Set<Integer> getAcceptStatCode() {
         return acceptStatCode;
     }
 
-    /**
-     * Set the interval between the processing of two pages.<br>
-     * Time unit is milliseconds.<br>
-     *
-     * @param sleepTime sleepTime
-     * @return this
-     */
     public Site setSleepTime(int sleepTime) {
         this.sleepTime = sleepTime;
         return this;
     }
 
-    /**
-     * Get the interval between the processing of two pages.<br>
-     * Time unit is milliseconds.<br>
-     *
-     * @return the interval between the processing of two pages,
-     */
     public int getSleepTime() {
         return sleepTime;
     }
 
-    /**
-     * Get retry times immediately when download fail, 0 by default.<br>
-     *
-     * @return retry times when download fail
-     */
     public int getRetryTimes() {
         return retryTimes;
     }
@@ -267,45 +183,20 @@ public class Site {
         return headers;
     }
 
-    /**
-     * Put an Http header for downloader. <br>
-     * Use {@link #addCookie(String, String)} for cookie and {@link #setUserAgent(String)} for user-agent. <br>
-     *
-     * @param key   key of http header, there are some keys constant in {@link HttpConstant.Header}
-     * @param value value of header
-     * @return this
-     */
     public Site addHeader(String key, String value) {
         headers.put(key, value);
         return this;
     }
 
-    /**
-     * Set retry times when download fail, 0 by default.<br>
-     *
-     * @param retryTimes retryTimes
-     * @return this
-     */
     public Site setRetryTimes(int retryTimes) {
         this.retryTimes = retryTimes;
         return this;
     }
 
-    /**
-     * When cycleRetryTimes is more than 0, it will add back to scheduler and try download again. <br>
-     *
-     * @return retry times when download fail
-     */
     public int getCycleRetryTimes() {
         return cycleRetryTimes;
     }
 
-    /**
-     * Set cycleRetryTimes times when download fail, 0 by default. <br>
-     *
-     * @param cycleRetryTimes cycleRetryTimes
-     * @return this
-     */
     public Site setCycleRetryTimes(int cycleRetryTimes) {
         this.cycleRetryTimes = cycleRetryTimes;
         return this;
@@ -319,24 +210,11 @@ public class Site {
         return retrySleepTime;
     }
 
-    /**
-     * Set retry sleep times when download fail, 1000 by default. <br>
-     *
-     * @param retrySleepTime retrySleepTime
-     * @return this
-     */
     public Site setRetrySleepTime(int retrySleepTime) {
         this.retrySleepTime = retrySleepTime;
         return this;
     }
 
-    /**
-     * Whether use gzip. <br>
-     * Default is true, you can set it to false to disable gzip.
-     *
-     * @param useGzip useGzip
-     * @return this
-     */
     public Site setUseGzip(boolean useGzip) {
         this.useGzip = useGzip;
         return this;
@@ -346,13 +224,6 @@ public class Site {
         return disableCookieManagement;
     }
 
-    /**
-     * Downloader is supposed to store response cookie.
-     * Disable it to ignore all cookie fields and stay clean.
-     * Warning: Set cookie will still NOT work if disableCookieManagement is true.
-     * @param disableCookieManagement disableCookieManagement
-     * @return this
-     */
     public Site setDisableCookieManagement(boolean disableCookieManagement) {
         this.disableCookieManagement = disableCookieManagement;
         return this;
