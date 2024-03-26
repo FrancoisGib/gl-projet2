@@ -23,3 +23,8 @@ Traduction de deux classes du chinois vers l'anglais, les classes traduites sont
 - **CustomRedirectStrategy** du package ***downloader*** dans webmagic-core
 Le traducteur utilisé est **DeepL**.
 <br/>https://github.com/FrancoisGib/gl-projet2/commit/33fb81930e688055d2966d616d961fcb65052361
+
+### Ajout, migration de documentations sur les attributs, deletion de documentations inutiles
+
+Ajout, suppression, migration dans les attributs de documentations de la classe **Site** du package webmagic-core
+<br/>https://github.com/FrancoisGib/gl-projet2/commit/468d1b3896ec6923dc56ec107474baded1a2a292
