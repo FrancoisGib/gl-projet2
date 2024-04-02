@@ -2,12 +2,6 @@ package us.codecraft.webmagic.scripts;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
-import java.util.Iterator;
-import java.util.Map;
-
-import org.jruby.RubyHash;
-import org.python.core.PyDictionary;
-
 import us.codecraft.webmagic.Page;
 
 /**

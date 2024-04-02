@@ -43,3 +43,8 @@ Selenium posait problème dans le projet et empêchait de build, j'ai fixé le p
 
 Suppression de code commenté dans 7 fichiers différents, ce sont des bouts de code ou des phrases commentées qui ne servent à rien.
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/8d05158fb63405425212c45795c469850bde3465)
+
+### Creation d'une template method remplacant un switch (et modification du test associé, mais qui sera remodifié plus tard)
+
+Création d'une template method dans la classe **ScriptProcessorBuilder** du package ***webmagic-scripts***, j'ai modifié l'enum Language en une classe abstraite et fait hériter chacun des anciens élements de l'enum pour en faire une template method, ceci fait respecter le single responsibility principle et créé une couche d'abstraction ce qui est préférable.
+<br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/702b68d58bb9d58817400ff5afa8b412f2c6c678)
