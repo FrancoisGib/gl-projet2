@@ -14,8 +14,8 @@ import java.util.List;
  */
 public abstract class BaseElementSelector implements Selector, ElementSelector {
     private Document parse(String text) {
-        // Jsoup could not parse <tr></tr> or <td></td> tag directly
-        // https://stackoverflow.com/questions/63607740/jsoup-couldnt-parse-tr-tag
+        /*  Jsoup could not parse <tr></tr> or <td></td> tag directly
+        https://stackoverflow.com/questions/63607740/jsoup-couldnt-parse-tr-tag */
         text = BaseSelectorUtils.preParse(text);
         return Jsoup.parse(text);
     }

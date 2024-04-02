@@ -81,7 +81,6 @@ class WebDriverPool {
 
 		// Fetch PhantomJS-specific configuration parameters
 		if (driver.equals(DRIVER_PHANTOMJS)) {
-			// "phantomjs_exec_path"
 			if (sConfig.getProperty("phantomjs_exec_path") != null) {
 				sCaps.setCapability(
 						PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
@@ -92,27 +91,17 @@ class WebDriverPool {
 								"Property '%s' not set!",
 								PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY));
 			}
-			// "phantomjs_driver_path"
 			if (sConfig.getProperty("phantomjs_driver_path") != null) {
 				System.out.println("Test will use an external GhostDriver");
 				sCaps.setCapability(
 						PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_PATH_PROPERTY,
 						sConfig.getProperty("phantomjs_driver_path"));
 			} else {
-				System.out
-						.println("Test will use PhantomJS internal GhostDriver");
+				System.out.println("Test will use PhantomJS internal GhostDriver");
 			}
 		}
 
-		// Disable "web-security", enable all possible "ssl-protocols" and
-		// "ignore-ssl-errors" for PhantomJSDriver
-		// sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, new
-		// String[] {
-		// "--web-security=false",
-		// "--ssl-protocol=any",
-		// "--ignore-ssl-errors=true"
-		// });
-
+		/* Disable "web-security", enable all possible "ssl-protocols" and "ignore-ssl-errors" for PhantomJSDriver */
 		ArrayList<String> cliArgsCap = new ArrayList<String>();
 		cliArgsCap.add("--web-security=false");
 		cliArgsCap.add("--ssl-protocol=any");
@@ -127,10 +116,7 @@ class WebDriverPool {
 						+ (sConfig.getProperty("phantomjs_driver_loglevel") != null ? sConfig
 								.getProperty("phantomjs_driver_loglevel")
 								: "INFO") });
-
-		// String driver = sConfig.getProperty("driver", DRIVER_PHANTOMJS);
-
-		// Start appropriate Driver
+	
 		if (isUrl(driver)) {
 			sCaps.setBrowserName("phantomjs");
 			mDriver = new RemoteWebDriver(new URL(driver), sCaps);
@@ -195,20 +181,13 @@ class WebDriverPool {
 		if (webDriverList.size() < capacity) {
 			synchronized (webDriverList) {
 				if (webDriverList.size() < capacity) {
-
-					// add new WebDriver instance into pool
-					try {
+					try { // add new WebDriver instance into pool
 						configure();
 						innerQueue.add(mDriver);
 						webDriverList.add(mDriver);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-
-					// ChromeDriver e = new ChromeDriver();
-					// WebDriver e = getWebDriver();
-					// innerQueue.add(e);
-					// webDriverList.add(e);
 				}
 			}
 

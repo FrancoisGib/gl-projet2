@@ -39,7 +39,6 @@ public class ScriptProcessorBuilder {
             InputStream resourceAsStream = new FileInputStream(fileName);
             this.script = IOUtils.toString(resourceAsStream, Charset.defaultCharset());
         } catch (IOException e) {
-            //wrap IOException because I prefer a runtime exception...
             throw new IllegalArgumentException(e);
         }
         return this;
@@ -50,7 +49,6 @@ public class ScriptProcessorBuilder {
             InputStream resourceAsStream = ScriptProcessor.class.getClassLoader().getResourceAsStream(fileName);
             this.script = IOUtils.toString(resourceAsStream, Charset.defaultCharset());
         } catch (IOException e) {
-            //wrap IOException because I prefer a runtime exception...
             throw new IllegalArgumentException(e);
         }
         return this;

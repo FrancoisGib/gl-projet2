@@ -61,7 +61,6 @@ public class HttpClientGenerator {
             logger.debug("supportedProtocols: {}", String.join(", ", supportedProtocols));
             return new SSLConnectionSocketFactory(sslContext, supportedProtocols,
                     null,
-                    // No host verification
                     (host, sslSession) -> true); // Priority bypass of security certificates
         } catch (KeyManagementException | NoSuchAlgorithmException e) {
             logger.error("ssl connection fail", e);
@@ -123,7 +122,6 @@ public class HttpClientGenerator {
                 }
             });
         }
-        //Solving post/redirect/post 302 bounce problems
         httpClientBuilder.setRedirectStrategy(new CustomRedirectStrategy());
 
         SocketConfig.Builder socketConfigBuilder = SocketConfig.custom();

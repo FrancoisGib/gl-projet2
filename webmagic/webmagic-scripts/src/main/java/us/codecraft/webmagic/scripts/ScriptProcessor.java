@@ -58,13 +58,6 @@ public class ScriptProcessor implements PageProcessor {
                 switch (language) {
                     case JavaScript:
                         engine.eval(defines + "\n" + script, context);
-//                        NativeObject o = (NativeObject) engine.get("result");
-//                        if (o != null) {
-//                            for (Object o1 : o.getIds()) {
-//                                String key = String.valueOf(o1);
-//                                page.getResultItems().put(key, NativeObject.getProperty(o, key));
-//                            }
-//                        }
                         break;
                     case JRuby:
                         RubyHash oRuby = (RubyHash) engine.eval(defines + "\n" + script, context);
