@@ -28,3 +28,8 @@ Le traducteur utilisé est **DeepL**.
 
 Ajout, suppression, migration dans les attributs de documentations de la classe **Site** du package webmagic-core
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/468d1b3896ec6923dc56ec107474baded1a2a292)
+
+### Suppression de code déprécié
+
+Suppression de code déprécié dans la classe WebDriverPool, la méthode supprimée est la méthode setJavascriptEnabled, c'est une méthode dépréciée depuis 2012 et qu'il ne faut plus utiliser. Voici un article parlant de la dépréciation de la méthode. [article](https://googlesamples.github.io/android-custom-lint-rules/checks/SetJavaScriptEnabled.md.html)
+<br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/796065b722389c3db04bbf11701f9a1316d11223)
