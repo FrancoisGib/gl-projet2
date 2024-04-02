@@ -38,3 +38,8 @@ Suppression de code déprécié dans la classe WebDriverPool, la méthode suppri
 
 Selenium posait problème dans le projet et empêchait de build, j'ai fixé le problème dans la classe **WebDriverPool** en décomposant seulement en ***ChromeOptions*** et ***FirefoxOptions***, pour ce qui est du test, j'ai repris le code d'une méthode afin d'initialiser correctement le caps.
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/e5880db88470b85ceca3a71a4e8d28255eba398c)
+
+### Suppression de code commenté
+
+Suppression de code commenté dans 7 fichiers différents, ce sont des bouts de code ou des phrases commentées qui ne servent à rien.
+<br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/8d05158fb63405425212c45795c469850bde3465)
