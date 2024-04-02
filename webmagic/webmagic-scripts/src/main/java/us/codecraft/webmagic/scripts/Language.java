@@ -1,27 +1,30 @@
 package us.codecraft.webmagic.scripts;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.jruby.RubyHash;
+import org.python.core.PyDictionary;
+
+import us.codecraft.webmagic.Page;
+
 /**
- * @author code4crafter@gmail.com
+ * @author Le gib
  */
-public enum Language {
-
-    JavaScript("javascript","js/defines.js",""),
-
-    JRuby("jruby","ruby/defines.rb",""),
-
-    Jython("jython","python/defines.py","");
+public abstract class Language {
+    public Language(String engineName, String defineFile, String gatherFile) {
+        this.engineName = engineName;
+        this.defineFile = defineFile;
+        this.gatherFile = gatherFile;
+    }
 
     private String engineName;
 
     private String defineFile;
 
     private String gatherFile;
-
-    Language(String engineName, String defineFile, String gatherFile) {
-        this.engineName = engineName;
-        this.defineFile = defineFile;
-        this.gatherFile = gatherFile;
-    }
 
     public String getEngineName() {
         return engineName;
@@ -34,4 +37,6 @@ public enum Language {
     public String getGatherFile() {
         return gatherFile;
     }
+
+    public abstract void process(ScriptEngine engine, String defines, String script, Page page) throws ScriptException;
 }

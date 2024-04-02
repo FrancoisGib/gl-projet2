@@ -14,7 +14,7 @@ import org.apache.commons.io.IOUtils;
  */
 public class ScriptProcessorBuilder {
 
-    private static final Language DefaultLanguage = Language.JavaScript;
+    private static final Language DefaultLanguage = new Javascript();
 
     private Language language = DefaultLanguage;
 

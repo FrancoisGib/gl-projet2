@@ -21,7 +21,7 @@ import java.util.Set;
 public class ScriptConsole {
 
     private static class Params {
-        Language language = Language.JavaScript;
+        Language language = new Javascript();
         String scriptFileName;
         List<String> urls;
         int thread = 1;
@@ -29,8 +29,8 @@ public class ScriptConsole {
         private static Map<Language, Set<String>> alias = new HashMap<Language, Set<String>>();
 
         static {
-            alias.put(Language.JavaScript, WMCollections.<String>newHashSet("js", "javascript", "JavaScript", "JS"));
-            alias.put(Language.JRuby, WMCollections.<String>newHashSet("ruby", "jruby", "Ruby", "JRuby"));
+            alias.put(new Javascript(), WMCollections.<String>newHashSet("js", "javascript", "JavaScript", "JS"));
+            alias.put(new JRuby(), WMCollections.<String>newHashSet("ruby", "jruby", "Ruby", "JRuby"));
         }
 
         public void setLanguagefromArg(String arg) {
