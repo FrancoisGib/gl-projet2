@@ -73,7 +73,6 @@ class WebDriverPool {
 
 		// Prepare capabilities
 		sCaps = new DesiredCapabilities();
-		sCaps.setJavascriptEnabled(true);
 		sCaps.setCapability("takesScreenshot", false);
 
 		String driver = sConfig.getProperty("driver", DRIVER_PHANTOMJS);
