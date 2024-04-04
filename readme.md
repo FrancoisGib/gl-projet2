@@ -48,3 +48,8 @@ Suppression de code commenté dans 7 fichiers différents, ce sont des bouts de 
 
 Création d'une template method dans la classe **ScriptProcessor** du package ***webmagic-scripts***, j'ai modifié l'enum Language en une classe abstraite et fait hériter chacun des anciens élements de l'enum pour en faire une template method, ceci fait respecter le single responsibility principle et créé une couche d'abstraction ce qui est préférable.
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/702b68d58bb9d58817400ff5afa8b412f2c6c678)
+
+### Suppression de code inutilisé
+
+Suppression de méthodes, attributs inutilisés dans différents fichiers du projet.
+<br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/cfbea0ea421cee3ebdd140a04ba3d3fa026c00e9)
