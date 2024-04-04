@@ -4,6 +4,9 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -29,10 +32,13 @@ public class HttpRequestBody implements Serializable {
         public static final String MULTIPART = "multipart/form-data";
     }
 
+    @Setter @Getter
     private byte[] body;
 
+    @Getter @Setter
     private String contentType;
 
+    @Getter @Setter
     private String encoding;
 
     public HttpRequestBody() {
@@ -41,26 +47,6 @@ public class HttpRequestBody implements Serializable {
     public HttpRequestBody(byte[] body, String contentType, String encoding) {
         this.body = body;
         this.contentType = contentType;
-        this.encoding = encoding;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public String getEncoding() {
-        return encoding;
-    }
-
-    public void setBody(byte[] body) {
-        this.body = body;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public void setEncoding(String encoding) {
         this.encoding = encoding;
     }
 
@@ -94,9 +80,5 @@ public class HttpRequestBody implements Serializable {
         } catch (UnsupportedEncodingException e) {
             throw new IllegalArgumentException("illegal encoding " + encoding, e);
         }
-    }
-
-    public byte[] getBody() {
-        return body;
     }
 }

@@ -5,6 +5,8 @@ import us.codecraft.webmagic.Site;
 
 import java.util.List;
 
+import lombok.Getter;
+
 /**
  * A simple PageProcessor.
  *
@@ -15,6 +17,7 @@ public class SimplePageProcessor implements PageProcessor {
 
     private String urlPattern;
 
+    @Getter
     private Site site;
 
     public SimplePageProcessor(String urlPattern) {
@@ -34,11 +37,5 @@ public class SimplePageProcessor implements PageProcessor {
         page.putField("html", page.getHtml().toString());
         //extract by Readability
         page.putField("content", page.getHtml().smartContent());
-    }
-
-    @Override
-    public Site getSite() {
-        //settings
-        return site;
     }
 }

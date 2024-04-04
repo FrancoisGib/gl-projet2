@@ -14,6 +14,7 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import lombok.Setter;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -38,19 +39,13 @@ public class HttpClientDownloader extends AbstractDownloader {
 
     private HttpClientGenerator httpClientGenerator = new HttpClientGenerator();
 
+    @Setter
     private HttpUriRequestConverter httpUriRequestConverter = new HttpUriRequestConverter();
 
+    @Setter
     private ProxyProvider proxyProvider;
 
     private boolean responseHeader = true;
-
-    public void setHttpUriRequestConverter(HttpUriRequestConverter httpUriRequestConverter) {
-        this.httpUriRequestConverter = httpUriRequestConverter;
-    }
-
-    public void setProxyProvider(ProxyProvider proxyProvider) {
-        this.proxyProvider = proxyProvider;
-    }
 
     private CloseableHttpClient getHttpClient(Site site) {
         if (site == null) {

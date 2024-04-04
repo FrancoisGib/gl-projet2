@@ -8,16 +8,24 @@ import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.lang3.StringUtils;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Proxy {
 
+    @Getter @Setter
     private String scheme;
 
+    @Getter
     private String host;
 
+    @Getter
     private int port;
 
+    @Getter
     private String username;
 
+    @Getter
     private String password;
 
     public static Proxy create(final URI uri) {
@@ -50,30 +58,6 @@ public class Proxy {
         this.port = port;
         this.username = username;
         this.password = password;
-    }
-
-    public String getScheme() {
-        return scheme;
-    }
-
-    public void setScheme(String scheme) {
-        this.scheme = scheme;
-    }
-
-	public String getHost() {
-        return host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public URI toURI() {
