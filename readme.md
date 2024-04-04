@@ -53,3 +53,5 @@ Création d'une template method dans la classe **ScriptProcessor** du package **
 
 Suppression de méthodes, attributs inutilisés dans différents fichiers du projet.
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/cfbea0ea421cee3ebdd140a04ba3d3fa026c00e9)
+<br/>Et j'ai aussi dû fixer un test associé à du code supprimé.
+<br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/3916ef5631ae20bc238b61b2076e2bb76d4c9509)
