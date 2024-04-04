@@ -37,8 +37,6 @@ public class SeleniumDownloader extends AbstractDownloader implements Closeable 
 
     private int poolSize = 1;
 
-    private static final String DRIVER_PHANTOMJS = "phantomjs";
-
     /**
      * 新建
      *
@@ -47,16 +45,6 @@ public class SeleniumDownloader extends AbstractDownloader implements Closeable 
     public SeleniumDownloader(String chromeDriverPath) {
         System.getProperties().setProperty("webdriver.chrome.driver",
                 chromeDriverPath);
-    }
-
-    /**
-     * Constructor without any filed. Construct PhantomJS browser
-     *
-     * @author bob.li.0718@gmail.com
-     */
-    public SeleniumDownloader() {
-        // System.setProperty("phantomjs.binary.path",
-        // "/Users/Bingo/Downloads/phantomjs-1.9.7-macosx/bin/phantomjs");
     }
 
     /**

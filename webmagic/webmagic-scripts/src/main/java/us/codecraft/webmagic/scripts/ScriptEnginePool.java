@@ -11,14 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ScriptEnginePool {
 
-    private final int size;
-
     private final AtomicInteger availableCount;
 
     private final LinkedBlockingQueue<ScriptEngine> scriptEngines = new LinkedBlockingQueue<ScriptEngine>();
 
     public ScriptEnginePool(Language language,int size) {
-        this.size = size;
         this.availableCount = new AtomicInteger(size);
         for (int i=0;i<size;i++){
             ScriptEngineManager manager = new ScriptEngineManager();
