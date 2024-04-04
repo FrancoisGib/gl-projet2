@@ -60,3 +60,11 @@ Suppression de méthodes, attributs inutilisés dans différents fichiers du pro
 
 Lombok est une librairie qui sert à enlever les getters et setters d'une classe en mettant au dessus de l'attribut concerné ```@Getter``` ou ```@Setter```, j'ai donc ajouté cette librairie à un des packages du projet et j'ai enlevé les getters et setters dans les classes où je pouvais le faire.
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/53c808054103bb1eb83de0ec19d738cdd85a9411)
+
+### Ajout d'une template method pour la méthode readOptions dans ScriptConsole
+
+J'ai ajouté une template method pour pouvoir avoir plus facilement et proprement des extensions des paramètres console.
+Pour cela j'ai donc créé plusieurs options dans le fichier **CommandLineOptions** et migrer une fonction statique dans le fichier **ConfigLogger**.
+Ce changement utilise le polymorphisme au lieu d'avoir beaucoup de if inutiles et réduit les responsabilités de la classe **ScriptConsole** en déléguant les différentes options de configuration à **CommandLineOption**.
+De plus ce changement permet d'enlever des dépendances dans la classe **ScriptConsole** ce qui réduit sa visibilité.
+<br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/5fed705c047bc6c7da6c726b3b5936064c4e4a96)
