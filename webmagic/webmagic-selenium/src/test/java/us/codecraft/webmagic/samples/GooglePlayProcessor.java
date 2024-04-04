@@ -39,7 +39,7 @@ public class GooglePlayProcessor implements PageProcessor {
 				.addPipeline(
 						new FilePipeline(
 								"/Users/Bingo/Documents/workspace/webmagic/webmagic-selenium/data/"))
-				.setDownloader(new SeleniumDownloader())
+				.setDownloader(new SeleniumDownloader("webdriver.chrome.driver"))
 				.addUrl("https://play.google.com/store/apps/details?id=com.tencent.mm")
 				.runAsync();
 	}
