@@ -55,3 +55,8 @@ Suppression de méthodes, attributs inutilisés dans différents fichiers du pro
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/cfbea0ea421cee3ebdd140a04ba3d3fa026c00e9)
 <br/>Et j'ai aussi dû fixer un test associé à du code supprimé.
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/3916ef5631ae20bc238b61b2076e2bb76d4c9509)
+
+### Ajout de lombok pour supprimer les getters et setters
+
+Lombok est une librairie qui sert à enlever les getters et setters d'une classe en mettant au dessus de l'attribut concerné ```@Getter``` ou ```@Setter```, j'ai donc ajouté cette librairie à un des packages du projet et j'ai enlevé les getters et setters dans les classes où je pouvais le faire.
+<br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/53c808054103bb1eb83de0ec19d738cdd85a9411)
