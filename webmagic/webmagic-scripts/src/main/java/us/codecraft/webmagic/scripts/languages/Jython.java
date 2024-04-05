@@ -1,4 +1,4 @@
-package us.codecraft.webmagic.scripts;
+package us.codecraft.webmagic.scripts.languages;
 
 import java.util.Iterator;
 import java.util.Map;

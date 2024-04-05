@@ -1,4 +1,4 @@
-package us.codecraft.webmagic.scripts;
+package us.codecraft.webmagic.scripts.languages;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
