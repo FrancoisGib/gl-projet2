@@ -49,6 +49,15 @@ public class HttpClientGenerator {
         connectionManager.setDefaultMaxPerRoute(100);
     }
 
+    public HttpClientGenerator setPoolSize(int poolSize) {
+        connectionManager.setMaxTotal(poolSize);
+        return this;
+    }
+
+    public CloseableHttpClient getClient(Site site) {
+        return generateClient(site);
+    }
+
     private SSLConnectionSocketFactory buildSSLConnectionSocketFactory() {
         try {
             SSLContext sslContext = createIgnoreVerifySSL();
@@ -90,15 +99,6 @@ public class HttpClientGenerator {
         SSLContext sc = SSLContext.getInstance("TLS");
         sc.init(null, new TrustManager[]{trustManager}, null);
         return sc;
-    }
-
-    public HttpClientGenerator setPoolSize(int poolSize) {
-        connectionManager.setMaxTotal(poolSize);
-        return this;
-    }
-
-    public CloseableHttpClient getClient(Site site) {
-        return generateClient(site);
     }
 
     private CloseableHttpClient generateClient(Site site) {

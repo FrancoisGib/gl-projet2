@@ -24,26 +24,6 @@ public abstract class AbstractSelectable implements Selectable {
         return $(selector, attrName);
     }
 
-    protected Selectable select(Selector selector, List<String> strings) {
-        List<String> results = new ArrayList<String>();
-        for (String string : strings) {
-            String result = selector.select(string);
-            if (result != null) {
-                results.add(result);
-            }
-        }
-        return new PlainText(results);
-    }
-
-    protected Selectable selectList(Selector selector, List<String> strings) {
-        List<String> results = new ArrayList<String>();
-        for (String string : strings) {
-            List<String> result = selector.selectList(string);
-            results.addAll(result);
-        }
-        return new PlainText(results);
-    }
-
     @Override
     public List<String> all() {
         return getSourceTexts();
@@ -108,5 +88,25 @@ public abstract class AbstractSelectable implements Selectable {
     @Override
     public boolean match() {
         return CollectionUtils.isNotEmpty(getSourceTexts());
+    }
+
+    protected Selectable select(Selector selector, List<String> strings) {
+        List<String> results = new ArrayList<String>();
+        for (String string : strings) {
+            String result = selector.select(string);
+            if (result != null) {
+                results.add(result);
+            }
+        }
+        return new PlainText(results);
+    }
+
+    protected Selectable selectList(Selector selector, List<String> strings) {
+        List<String> results = new ArrayList<String>();
+        for (String string : strings) {
+            List<String> result = selector.selectList(string);
+            results.addAll(result);
+        }
+        return new PlainText(results);
     }
 }

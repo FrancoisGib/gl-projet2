@@ -4,6 +4,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.scripts.languages.JRuby;
+import us.codecraft.webmagic.scripts.languages.Javascript;
+import us.codecraft.webmagic.scripts.languages.Jython;
 
 /**
  * @author code4crafter@gmail.com

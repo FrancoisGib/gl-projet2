@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import org.apache.commons.io.IOUtils;
 
+import us.codecraft.webmagic.scripts.languages.Javascript;
+import us.codecraft.webmagic.scripts.languages.Language;
+
 
 /**
  * @author code4crafter@gmail.com

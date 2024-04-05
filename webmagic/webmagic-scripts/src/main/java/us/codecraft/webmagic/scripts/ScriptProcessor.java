@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.scripts.languages.Language;
 
 /**
  * @author code4crafter@gmail.com

@@ -7,6 +7,9 @@ import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
+import us.codecraft.webmagic.scripts.languages.JRuby;
+import us.codecraft.webmagic.scripts.languages.Javascript;
+import us.codecraft.webmagic.scripts.languages.Language;
 import us.codecraft.webmagic.utils.WMCollections;
 
 public class Params {

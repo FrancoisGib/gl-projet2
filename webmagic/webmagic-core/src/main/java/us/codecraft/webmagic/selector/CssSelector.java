@@ -30,31 +30,6 @@ public class CssSelector extends BaseElementSelector {
         this.attrName = attrName;
     }
 
-    private String getValue(Element element) {
-        if (attrName == null) {
-            return element.outerHtml();
-        } else if ("innerHtml".equalsIgnoreCase(attrName)) {
-            return element.html();
-        } else if ("text".equalsIgnoreCase(attrName)) {
-            return getText(element);
-        } else if ("allText".equalsIgnoreCase(attrName)) {
-            return element.text();
-        } else {
-            return element.attr(attrName);
-        }
-    }
-
-    protected String getText(Element element) {
-        StringBuilder accum = new StringBuilder();
-        for (Node node : element.childNodes()) {
-            if (node instanceof TextNode) {
-                TextNode textNode = (TextNode) node;
-                accum.append(textNode.text());
-            }
-        }
-        return accum.toString();
-    }
-
     @Override
     public String select(Element element) {
         List<Element> elements = selectElements(element);
@@ -96,5 +71,30 @@ public class CssSelector extends BaseElementSelector {
     @Override
     public boolean hasAttribute() {
         return attrName != null;
+    }
+
+    protected String getText(Element element) {
+        StringBuilder accum = new StringBuilder();
+        for (Node node : element.childNodes()) {
+            if (node instanceof TextNode) {
+                TextNode textNode = (TextNode) node;
+                accum.append(textNode.text());
+            }
+        }
+        return accum.toString();
+    }
+
+    private String getValue(Element element) {
+        if (attrName == null) {
+            return element.outerHtml();
+        } else if ("innerHtml".equalsIgnoreCase(attrName)) {
+            return element.html();
+        } else if ("text".equalsIgnoreCase(attrName)) {
+            return getText(element);
+        } else if ("allText".equalsIgnoreCase(attrName)) {
+            return element.text();
+        } else {
+            return element.attr(attrName);
+        }
     }
 }

@@ -47,24 +47,6 @@ public class HttpClientDownloader extends AbstractDownloader {
 
     private boolean responseHeader = true;
 
-    private CloseableHttpClient getHttpClient(Site site) {
-        if (site == null) {
-            return httpClientGenerator.getClient(null);
-        }
-        String domain = site.getDomain();
-        CloseableHttpClient httpClient = httpClients.get(domain);
-        if (httpClient == null) {
-            synchronized (this) {
-                httpClient = httpClients.get(domain);
-                if (httpClient == null) {
-                    httpClient = httpClientGenerator.getClient(site);
-                    httpClients.put(domain, httpClient);
-                }
-            }
-        }
-        return httpClient;
-    }
-
     @Override
     public Page download(Request request, Task task) {
         if (task == null || task.getSite() == null) {
@@ -133,5 +115,23 @@ public class HttpClientDownloader extends AbstractDownloader {
             logger.info("Charset autodetect failed, use {} as charset.", task.getSite().getDefaultCharset());
         }
         return charset;
+    }
+
+    private CloseableHttpClient getHttpClient(Site site) {
+        if (site == null) {
+            return httpClientGenerator.getClient(null);
+        }
+        String domain = site.getDomain();
+        CloseableHttpClient httpClient = httpClients.get(domain);
+        if (httpClient == null) {
+            synchronized (this) {
+                httpClient = httpClients.get(domain);
+                if (httpClient == null) {
+                    httpClient = httpClientGenerator.getClient(site);
+                    httpClients.put(domain, httpClient);
+                }
+            }
+        }
+        return httpClient;
     }
 }

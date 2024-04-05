@@ -2,6 +2,9 @@ package us.codecraft.webmagic.scripts;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+
+import us.codecraft.webmagic.scripts.languages.Language;
+
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -19,10 +19,6 @@ public class HashSetDuplicateRemover implements DuplicateRemover {
         return !urls.add(getUrl(request));
     }
 
-    protected String getUrl(Request request) {
-        return request.getUrl();
-    }
-
     @Override
     public void resetDuplicateCheck(Task task) {
         urls.clear();
@@ -31,5 +27,9 @@ public class HashSetDuplicateRemover implements DuplicateRemover {
     @Override
     public int getTotalRequestsCount(Task task) {
         return urls.size();
+    }
+
+    protected String getUrl(Request request) {
+        return request.getUrl();
     }
 }

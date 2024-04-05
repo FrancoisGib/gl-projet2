@@ -22,10 +22,6 @@ public class HtmlNode extends AbstractSelectable {
         elements = null;
     }
 
-    protected List<Element> getElements() {
-        return elements;
-    }
-
     @Override
     public Selectable smartContent() {
         SmartContentSelector smartContentSelector = Selectors.smartContent();
@@ -54,6 +50,29 @@ public class HtmlNode extends AbstractSelectable {
     @Override
     public Selectable select(Selector selector) {
         return selectList(selector);
+    }
+
+    @Override
+    public Selectable $(String selector) {
+        CssSelector cssSelector = Selectors.$(selector);
+        return selectElements(cssSelector);
+    }
+
+    @Override
+    public Selectable $(String selector, String attrName) {
+        CssSelector cssSelector = Selectors.$(selector, attrName);
+        return selectElements(cssSelector);
+    }
+
+    @Override
+    public List<Selectable> nodes() {
+        List<Selectable> selectables = new ArrayList<Selectable>();
+        for (Element element : getElements()) {
+            List<Element> childElements = new ArrayList<Element>(1);
+            childElements.add(element);
+            selectables.add(new HtmlNode(childElements));
+        }
+        return selectables;
     }
 
     /**
@@ -85,6 +104,19 @@ public class HtmlNode extends AbstractSelectable {
         }
     }
 
+    protected List<Element> getElements() {
+        return elements;
+    }
+
+    @Override
+    protected List<String> getSourceTexts() {
+        List<String> sourceTexts = new ArrayList<String>(getElements().size());
+        for (Element element : getElements()) {
+            sourceTexts.add(element.toString());
+        }
+        return sourceTexts;
+    }
+
     /**
      * Only document can be select
      * See: https://github.com/code4craft/webmagic/issues/113
@@ -102,37 +134,5 @@ public class HtmlNode extends AbstractSelectable {
             return root;
         }
         return element;
-    }
-
-    @Override
-    public Selectable $(String selector) {
-        CssSelector cssSelector = Selectors.$(selector);
-        return selectElements(cssSelector);
-    }
-
-    @Override
-    public Selectable $(String selector, String attrName) {
-        CssSelector cssSelector = Selectors.$(selector, attrName);
-        return selectElements(cssSelector);
-    }
-
-    @Override
-    public List<Selectable> nodes() {
-        List<Selectable> selectables = new ArrayList<Selectable>();
-        for (Element element : getElements()) {
-            List<Element> childElements = new ArrayList<Element>(1);
-            childElements.add(element);
-            selectables.add(new HtmlNode(childElements));
-        }
-        return selectables;
-    }
-
-    @Override
-    protected List<String> getSourceTexts() {
-        List<String> sourceTexts = new ArrayList<String>(getElements().size());
-        for (Element element : getElements()) {
-            sourceTexts.add(element.toString());
-        }
-        return sourceTexts;
     }
 }

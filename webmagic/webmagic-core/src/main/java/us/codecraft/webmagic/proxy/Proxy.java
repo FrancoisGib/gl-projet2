@@ -78,15 +78,6 @@ public class Proxy {
         return uri;
     }
 
-    private String urlencode(String s) {
-        String enc = StandardCharsets.UTF_8.name();
-        try {
-            return URLEncoder.encode(s, enc);
-        } catch (UnsupportedEncodingException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,4 +107,12 @@ public class Proxy {
         return this.toURI().toString();
     }
 
+    private String urlencode(String s) {
+        String enc = StandardCharsets.UTF_8.name();
+        try {
+            return URLEncoder.encode(s, enc);
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
 }

@@ -56,11 +56,6 @@ public class Html extends HtmlNode {
         return document;
     }
 
-    @Override
-    protected List<Element> getElements() {
-        return Collections.<Element>singletonList(getDocument());
-    }
-
     /**
      * @param selector selector
      * @return result
@@ -87,4 +82,8 @@ public class Html extends HtmlNode {
         return new Html(text);
     }
 
+    @Override
+    protected List<Element> getElements() {
+        return Collections.<Element>singletonList(getDocument());
+    }
 }
