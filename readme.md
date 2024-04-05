@@ -83,7 +83,7 @@ J'ai effectué des pull request sur le dépôt de webmagic, les deux versions on
 
 ### Migration des méthodes privées en fin de classe, ensuite protected et enfin plus haut public
 
-Une bonne pratique est de mettre dans une classe les méthodes privées ensembles, protected ensebmeles et public ensembles car cela permet de savoir rapidement où chercher dans un fichier si on en a besoin. J'ai donc migrer ces méthodes dans une dizaine de classes.
+Une bonne pratique est de mettre dans une classe les méthodes privées ensembles, protected ensembles et public ensembles car cela permet de savoir rapidement où chercher dans un fichier si on en a besoin. J'ai donc migrer ces méthodes dans une dizaine de classes.
 <br/>[Lien de la deuxième version](https://github.com/FrancoisGib/gl-projet2/commit/8b62a24b7ed1b37892fbe288e3cffa38a0891fdb)
 
 ## Conclusion sur la matière
