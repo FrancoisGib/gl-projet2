@@ -80,3 +80,13 @@ Cet interface permet donc d'ajouter facilement d'autres types de contenus et aus
 <br/>[Lien de la deuxième version](https://github.com/FrancoisGib/gl-projet2/commit/7405263554ba7c7e6eaad178f153a8c4fff38583)
 
 J'ai effectué des pull request sur le dépôt de webmagic, les deux versions ont été acceptés (il y a maintenant la deuxième version sur le dépôt du projet).
+
+### Migration des méthodes privées en fin de classe, ensuite protected et enfin plus haut public
+
+Une bonne pratique est de mettre dans une classe les méthodes privées ensembles, protected ensebmeles et public ensembles car cela permet de savoir rapidement où chercher dans un fichier si on en a besoin. J'ai donc migrer ces méthodes dans une dizaine de classes.
+<br/>[Lien de la deuxième version](https://github.com/FrancoisGib/gl-projet2/commit/8b62a24b7ed1b37892fbe288e3cffa38a0891fdb)
+
+## Conclusion sur la matière
+
+Ayant pour projet de continuer mes études en Master Génie Logiciel, il était primordial que j'aime cette matière, et ce fût le cas, j'ai moins aimé la partie 1 du projet ce qui est normal car ce n'est que de l'analyse et non du développement, mais cette étape est nécessaire pour réaliser la partie 2 du projet. J'ai beaucoup aimé dénicher les problèmes à corriger et améliorer de webmagic car corriger du code est totalement différent que de l'implémenter soi-même. On se rend vite compte que quand un projet est mal structuré à la base, il est très dur de le corriger et qu'il est donc important de réfléchir à une bonne conception au début du projet.
+Avant le début de la matière, j'avais déjà connaissance de beaucoup de sujets abordés dans cette matière car j'ai lu le livre Clean Code de Robert C. Martin il y a environ 6 mois car la conception (la bonne conception) est ce qui m'intéresse. C'est donc avec cette matière que je conforte l'idée de vouloir poursuivre mes études en Master Génie Logiciel.
