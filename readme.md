@@ -68,3 +68,15 @@ Pour cela j'ai donc créé plusieurs options dans le fichier **CommandLineOption
 Ce changement utilise le polymorphisme au lieu d'avoir beaucoup de if inutiles et réduit les responsabilités de la classe **ScriptConsole** en déléguant les différentes options de configuration à **CommandLineOption**.
 De plus ce changement permet d'enlever des dépendances dans la classe **ScriptConsole** ce qui réduit sa visibilité.
 <br/>[Lien de la modification](https://github.com/FrancoisGib/gl-projet2/commit/5fed705c047bc6c7da6c726b3b5936064c4e4a96)
+
+### Refactor d'un des plus grosses méthode du projet (processSingle) en implémentant deux strategy pattern
+
+J'ai refactoriser la méthode **processSingle** de la classe ***PageModelExtractor*** dans webmagic-extension.
+J'ai d'abord eu une approche avec une stratégie de selection de soit une liste de chaînes de caractères ou une chaîne simple, couplé avec une autre stratégie pour ajouter directement des attributs à la classe passée en paramètres.
+Je me suis vite rendu compte que ce n'était pas la meilleure option car je dupliquais mon code dans les classes **SingleSelection** et **MultipleSelection** et ce qui faisait que mon pattern n'était pas vraiment mieux que la méthode de base de webmagic.
+<br/>[Lien de la première version](https://github.com/FrancoisGib/gl-projet2/commit/1dd7d71d0f5d7e7e0fe1d8d84a05a1cd1b7ab96b)
+<br/>J'ai donc opté pour une autre stratégie, au lieu d'avoir la stratégie de sélection simple ou multiple, j'ai préféré redéfinir l'enum source de la classe FieldExtractor en interface et implémenter pour les différents types de contenus les deux cas (simple et multiple).
+Cet interface permet donc d'ajouter facilement d'autres types de contenus et aussi de réduire encore la classe ***PageModelExtractor*** qui a déjà beaucoup trop de responsabilités. De plus, implémenter les sources de cette façon délègue aussi du travail de la classe ***FieldExtractor*** et surtout permet d'être beaucoup plus lisible et compréhensible.
+<br/>[Lien de la deuxième version](https://github.com/FrancoisGib/gl-projet2/commit/7405263554ba7c7e6eaad178f153a8c4fff38583)
+
+J'ai effectué des pull request sur le dépôt de webmagic, les deux versions ont été acceptés (il y a maintenant la deuxième version sur le dépôt du projet).
